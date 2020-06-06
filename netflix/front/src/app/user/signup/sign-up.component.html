@@ -1,0 +1,77 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+  <div class="imagem"></div>
+  <header>
+    <div class="showcase-top">
+      <a [routerLink]="['/home']">
+        <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+      </a>
+    </div>
+  </header>
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Assinar</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="group">
+              <div class="input-group form-group">
+                <input type="text" class="form-control">
+                <label><span class="span-input">Nome Completo</span></label>
+              </div>
+              <br>
+              <div class="input-group form-group">
+                <input type="text" class="form-control">
+                <label><span class="span-input">E-mail</span></label>
+              </div>
+              <br>
+              <div class="input-group form-group">
+                <input type="password" class="form-control">
+                <label><span class="span-input">Senha</span></label>
+              </div>
+              <br>
+              <div class="input-group form-group">
+                <label class="plano">Plano</label>
+                <select id="inputState" class="form-control">
+                  <option selected disabled>Escolha...</option>
+                  <option>Básico</option>
+                  <option>Padrão</option>
+                  <option>Premium</option>
+                </select>
+              </div>
+            </div>
+            <div class="botao">
+              <div class="form-group">
+                <input type="submit" value="Assinar" class="btn float-center login_btn">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>Dúvidas? Ligue 0800-761-4631</p>
+    <div class="footer-cols">
+      <ul>
+        <li><a href="#">Termos dos Cartões pré-pagos</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Termos de uso</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Declaração de privacidade</a></li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <a href="#">Netflix Brasil</a>
+  </footer>
+</body>

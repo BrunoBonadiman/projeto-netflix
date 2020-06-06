@@ -1,0 +1,75 @@
+<body>
+  <header class="showcase">
+    <div class="showcase-top">
+      <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+      <a [routerLink]="['/signin']" class="btn btn-rounded">Entrar</a>
+    </div>
+    <div class="showcase-content">
+      <span id="apresentacao"><strong>Filmes, séries e muito mais. Sem limites.</strong></span>
+      <br>
+      <span id="assista">Assista onde quiser. Cancele quando quiser.</span>
+      <a [routerLink]="['/signup']" class="btn btn-lg">Assine a Netflix <i class="fa fa-angle-right"></i></a>
+    </div>
+  </header>
+  <section class="tabs">
+    <div class="container">
+      <div id="tab-1" class="tab-item tab-border">
+        <a [routerLink]="['/cancelamento']">
+          <i class="fa fa-reply-all fa-3x"></i>
+          <p class="hide-sm">Cancelar a qualquer momento</p>
+        </a>
+      </div>
+      <div id="tab-2" class="tab-item">
+        <a [routerLink]="['/dispositivos']">
+          <i class="fa fa-tablet fa-3x"></i>
+          <p class="hide-sm">Assista em qualquer lugar</p>
+        </a>
+      </div>
+      <div id="tab-3" class="tab-item">
+        <a [routerLink]="['/planos']">
+          <i class="fa fa-tags fa-3x"></i>
+          <p class="hide-sm">Escolha o seu plano</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="tab-content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+  <footer class="footer">
+    <p>Dúvidas? Ligue 0800-761-4631</p>
+    <div class="footer-cols">
+      <ul>
+        <li><a href="#">Perguntas frequentes</a></li>
+        <li><a href="#">Relações com investidores</a></li>
+        <li><a href="#">Formas de assistir</a></li>
+        <li><a href="#">Informações corporativas</a></li>
+        <li><a href="#">Originais Netflix</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Centro de ajuda</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Termos de uso</a></li>
+        <li><a href="#">Entre em contato</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Conta</a></li>
+        <li><a href="#">Resgatar cartão pré-pago</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Teste de Velocidade</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Imprensa</a></li>
+        <li><a href="#">Comprar cartão pré-pago</a></li>
+        <li><a href="#">Preferências de cookies</a></li>
+        <li><a href="#">Avisos legais</a></li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <a href="#">Netflix Brasil</a>
+  </footer>
+</body>
