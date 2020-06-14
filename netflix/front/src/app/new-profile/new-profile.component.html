@@ -1,0 +1,39 @@
+<body>
+  <header class="showcase">
+    <div class="showcase-top">
+      <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+    </div>
+    <div class="showcase-content">
+      <div class="title">
+        <span id="apresentacao">Adicionar perfil</span>
+      </div>
+      <div class="title2">
+        <span id="legenda">Adicione um perfil Netflix para outra pessoa.</span>
+      </div>
+      <br>
+      <hr class="hr2">
+      <br>
+      <form #newProfileForm="ngForm" (ngSubmit)="newProfileForm.valid && onSubmit(newProfileForm)">
+        <div class="row">
+          <img src="../../assets/img/comum-red.png" name="urlImagem" id="imgNewProfile">
+          <input type="text" class="form-control" #nome="ngModel" [(ngModel)]="newProfileService.UserProfile.nome"
+            required name="hakunamatata" [ngClass]="{'invalid-textbox' :newProfileForm.submitted && !nome.valid }" id="nome"
+            placeholder="Nome">
+          <div class="row pergunta">
+            <input type="checkbox" class="form-control" #crianca="ngModel"
+              [(ngModel)]="newProfileService.UserProfile.crianca" id="crianca" data-toggle="tooltip"
+              data-placement="top" title="Selecione esta opção para exibir
+apenas filmes e séries para crianças
+até 12 anos."><span id="crianca-id">Criança?</span>
+          </div>
+        </div>
+        <br>
+        <hr class="hr1">
+        <div class="row buttons">
+          <button type="submit" class="btn float-center continuar_btn"><b>C O N T I N U A R</b></button> &nbsp;&nbsp;
+          <button type="submit" (click)= "voltar()" class="btn2 float-center cancelar_btn"><b>C A N C E L A R</b></button>
+        </div>
+      </form>
+    </div>
+  </header>
+</body>

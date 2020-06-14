@@ -11,6 +11,13 @@ import { appRoutes } from './routes';
 import { CancelamentoComponent } from './presentation/cancelamento/cancelamento.component';
 import { SigninComponent } from './user/signin/sign-in.component';
 import { SignupComponent } from './user/signup/sign-up.component';
+import { UserService } from './shared/user.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { InterceptorService } from './auth/auth.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NewProfileComponent } from './new-profile/new-profile.component';
+import { NewProfileService } from './new-profile/service/new-profile.service';
 
 @NgModule({
   declarations: [
@@ -20,14 +27,27 @@ import { SignupComponent } from './user/signup/sign-up.component';
     DispositivosComponent,
     CancelamentoComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    UserProfileComponent,
+    NewProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    NewProfileService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

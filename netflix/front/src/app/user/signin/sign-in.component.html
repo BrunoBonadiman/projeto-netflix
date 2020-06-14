@@ -20,16 +20,33 @@
           <h3>Entrar</h3>
         </div>
         <div class="card-body">
-          <form>
+          <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
             <div class="group">
               <div class="input-group form-group">
-                <input type="text" class="form-control">
+                <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="model.email"
+                  required [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
                 <label><span class="span-input">E-mail ou número de telefone</span></label>
+                <div class="validation" *ngIf="signInForm.submitted && password.errors">
+                  <label *ngIf="password.errors.required" class="validation-message">Informe um email ou número de
+                    telefone válido.</label>
+                </div>
+                <div class="validation" *ngIf="signInForm.submitted && email.errors?.pattern">
+                  <label class="validation-message">Endereço de email invalido.</label>
+                </div>
               </div>
               <br>
               <div class="input-group form-group">
-                <input type="password" class="form-control">
+                <input type="password" name="password" class="form-control" #password="ngModel"
+                  [(ngModel)]="model.password" required minlength="4" maxlength="60"
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
                 <label><span class="span-input">Senha</span></label>
+                <div class="validation" *ngIf="signInForm.submitted && password.errors">
+                  <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+                </div>
+                <div class="validation" *ngIf="signInForm.submitted && password.errors?.minlength">
+                  <label class="validation-message">A senha deve ter entre 4 e 60 caracteres.</label>
+                </div>
+
               </div>
             </div>
             <div class="botao">
@@ -46,6 +63,9 @@
           <div class="d-flex justify-content-center links">
             Novo por aqui?<a [routerLink]="['/signup']">Assine agora</a>
           </div>
+        </div>
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
         </div>
       </div>
     </div>

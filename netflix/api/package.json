@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,8 @@
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.17",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sweetalert2": "^9.14.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

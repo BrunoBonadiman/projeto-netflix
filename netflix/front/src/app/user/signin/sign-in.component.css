@@ -178,7 +178,7 @@ margin-left: 4px;
   padding: 10px 10px 10px 10px;
   display: block;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgb(196, 118, 2);
   background-color: white;
 }
 .group input:focus {
@@ -187,7 +187,7 @@ margin-left: 4px;
 /* LABEL ======================================= */
 
 .group label {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(83, 81, 81);
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -205,5 +205,43 @@ input:valid ~ label {
   top: -20px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
+}
+
+form .validation {
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+form input[type=email].invalid-textbox,
+form input[type=password].invalid-textbox {
+  border: 2px solid #ed5558;
+}
+
+form label.validation-message {
+  color: #ed5558;
+}
+
+.alert {
+  width: 100%;
+  text-align: center;
+  margin: 20px 5px 0 5px;
+  padding: 20px;
+  background-color: #f44336;
+  /* Red */
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.success {
+  width: 100%;
+  text-align: center;
+  margin: 20px 5px 0 5px;
+  padding: 20px;
+  background-color: #249424;
+  /* Green */
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
 

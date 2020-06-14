@@ -1,0 +1,26 @@
+<body>
+  <header class="showcase">
+    <div class="showcase-top">
+      <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+    </div>
+    <div class="showcase-content" *ngIf="userDetails">
+      <span id="apresentacao"><strong>Quem está assistindo?</strong></span>
+      <br>
+      <div class="row">
+        <a href="" id="linkUser">
+          <img src="../../assets/img/galinho.png" id="imgGalinho">
+          <br>
+          <br>
+          <span id="user"><strong>{{userDetails.fullName }}</strong></span>
+        </a>
+
+        <a [routerLink]="['/newprofile']" id="newProfile">
+          <i class="fa fa-plus-circle fa-5x"></i>
+          <br>
+          <br>
+          <span id="user"><strong>Adicionar Perfil</strong></span>
+        </a>
+      </div>
+    </div>
+  </header>
+</body>

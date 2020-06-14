@@ -1,19 +1,21 @@
 require('./config/config');
-require('./models/db');
+require('./models/database');
 require('./config/passportConfig');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const userRouter = require('./routes/user-router');
+const newProfileRouter = require('./routes/new-profile-router');
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-app.use('/api', rtsIndex);
-app.use('/message', rtsMessage);
+app.use('/api', userRouter);
+app.use('/api/profile', newProfileRouter);
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');

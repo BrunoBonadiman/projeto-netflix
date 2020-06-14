@@ -5,6 +5,9 @@ import { CancelamentoComponent } from './presentation/cancelamento/cancelamento.
 import { HomeComponent } from './presentation/presentation.component';
 import { SigninComponent } from './user/signin/sign-in.component';
 import { SignupComponent } from './user/signup/sign-up.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from './auth/auth.guard';
+import { NewProfileComponent } from './new-profile/new-profile.component';
 
 export const appRoutes: Routes = [
   {
@@ -33,6 +36,15 @@ export const appRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'userprofile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'newprofile',
+    component: NewProfileComponent
   },
   {
     path: '',
