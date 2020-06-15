@@ -17,11 +17,11 @@
         <div class="row">
           <img src="../../assets/img/comum-red.png" name="urlImagem" id="imgNewProfile">
           <input type="text" class="form-control" #nome="ngModel" [(ngModel)]="newProfileService.UserProfile.nome"
-            required name="hakunamatata" [ngClass]="{'invalid-textbox' :newProfileForm.submitted && !nome.valid }" id="nome"
+            required name="nome" [ngClass]="{'invalid-textbox' :newProfileForm.submitted && !nome.valid }" id="nome"
             placeholder="Nome">
           <div class="row pergunta">
             <input type="checkbox" class="form-control" #crianca="ngModel"
-              [(ngModel)]="newProfileService.UserProfile.crianca" id="crianca" data-toggle="tooltip"
+              [(ngModel)]="newProfileService.UserProfile.crianca" name="crianca" id="crianca" data-toggle="tooltip"
               data-placement="top" title="Selecione esta opção para exibir
 apenas filmes e séries para crianças
 até 12 anos."><span id="crianca-id">Criança?</span>

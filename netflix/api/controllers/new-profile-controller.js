@@ -1,30 +1,36 @@
+const mongoose = require('mongoose');
+const _ = require('lodash');
 const NewProfile = require('../models/new-profile-model');
 
-exports.create = async (req, res) => {
-  const novoPerfil = new NewProfile(req.body);
-  const perfil = await novoPerfil.save();
-  res.status(201).send({ message: 'Novo perfil criado com sucesso!', perfil });
-};
+module.exports.create = (req, res, next) => {
+  let profile = new NewProfile();
+  profile.nome = req.body.nome;
+  profile.crianca = req.body.crianca;
+  profile.urlImagem = req.body.urlImagem;
+  profile.save((err, doc) => {
+    if (!err)
+      res.send(doc);
+    else {
+      if (err.code == 11000)
+        res.status(422).send(['Esse nome já exite para essa conta.']);
+      else
+        return next(err);
+    }
 
-exports.findAll = async (req, res) => {
-  const perfis = await NewProfile.find({});
-  res.status(200).send(perfis);
-};
+  });
+}
 
-exports.findById = async (req, res) => {
-  const perfil = await NewProfile.findById(req.params.id);
-  res.status(200).send(perfil);
-};
-exports.update = async (req, res) => {
-  if (!req.body.nome || !req.body.crianca || !req.body.urlImagem) {
-    return res.status(400).send({ message: 'Os campos não podem ser vazios.' });
-  }
-
-  const perfil = await NewProfile.findByIdAndUpdate(req.params.id, req.body);
-  return res.status(200).send({ message: 'Perfil atualizado com sucesso!', perfil });
-};
-
-exports.delete = async (req, res) => {
-  const perfil = await NewProfile.findByIdAndDelete(req.params.id);
-  return res.status(200).send({ message: 'Perfil excluído com sucesso!', perfil });
-};
+module.exports.getProfile = (req, res, next) => {
+  NewProfile.find().exec((err, result) => {
+      if (err) {
+          return res.status(500).json({
+              myErroTitle: 'Ocorreu um erro ao buscar o Perfil!',
+              myError: err
+          })
+      }
+      res.status(200).json({
+          myMsgSucess: 'Perfis recuperados com sucesso!',
+          objsMessageSRecuperados: result
+      })
+  });
+}

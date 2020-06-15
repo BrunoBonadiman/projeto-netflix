@@ -1,5 +1,5 @@
 export default class Profile {
   nome: String;
-  crianca: Boolean;
+  crianca?: Boolean;
   urlImagem?: String;
 }

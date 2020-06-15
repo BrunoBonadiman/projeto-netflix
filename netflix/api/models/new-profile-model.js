@@ -8,11 +8,10 @@ var newProfileSchema = new Schema({
     },
     crianca:{
         type: Boolean,
-        required: true
+        required: false
     },
     urlImagem:{
-        type: String,
-        required: true
+        type: String
     },
     Usuario: {
         type: mongoose.Schema.Types.ObjectId,

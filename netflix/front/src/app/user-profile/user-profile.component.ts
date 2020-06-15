@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/user.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { NewProfileService } from '../new-profile/service/new-profile.service';
+import Profile from '../new-profile/model/new-profile.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,25 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  userDetails;
+  UserProfile;
   info = <any>[];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private newProfileService: NewProfileService, private router: Router) { }
   ngOnInit() {
-    this.userService.getUserProfile().subscribe(
+    this.newProfileService.getPerfil().subscribe(
       (res) => {
-        this.userDetails = res['user'];
-
-        var str = this.userDetails.fullName.split(' ').slice(0, 1).join(' ');
-        this.userDetails.fullName = str;
+        this.UserProfile = res['user'];
       },
       (err) => {
         console.log(err);
       });
-  }
-
-  onLogout() {
-    this.userService.deleteToken();
-    this.router.navigate(['/login']);
   }
 }

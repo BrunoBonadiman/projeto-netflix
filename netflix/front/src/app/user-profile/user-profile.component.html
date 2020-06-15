@@ -3,15 +3,15 @@
     <div class="showcase-top">
       <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
     </div>
-    <div class="showcase-content" *ngIf="userDetails">
-      <span id="apresentacao"><strong>Quem está assistindo?</strong></span>
+    <div class="showcase-content">
+      <span id="apresentacao">Quem está assistindo?</span>
       <br>
       <div class="row">
-        <a href="" id="linkUser">
-          <img src="../../assets/img/galinho.png" id="imgGalinho">
+        <a href="">
+          <img src="../../assets/img/comum-red.png" id="imgGalinho">
           <br>
           <br>
-          <span id="user"><strong>{{userDetails.fullName }}</strong></span>
+          <span id="user"><strong>Bruno</strong></span>
         </a>
 
         <a [routerLink]="['/newprofile']" id="newProfile">

@@ -312,6 +312,12 @@ img {
 
 #imgGalinho{
   width: 130px;
+  border: 2px solid;
+  border-color:#2e2d2d;
+}
+
+#imgGalinho:hover{
+  border-color: #fff;
 }
 
 #user{
