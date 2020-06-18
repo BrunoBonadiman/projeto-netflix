@@ -3,7 +3,6 @@ import { NewProfileService } from './service/new-profile.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
-import { stringify } from 'querystring';
 import Profile from './model/new-profile.model';
 
 @Component({
@@ -16,12 +15,13 @@ export class NewProfileComponent {
   constructor(public newProfileService: NewProfileService, private router: Router){}
 
   async onSubmit(form: NgForm) {
-    this.newProfileService.adicionarPerfil(form.value).subscribe(
+    this.newProfileService.addProfile(form.value).subscribe(
       (res) => {
         const newProfile = new Profile();
         newProfile.nome = '';
         newProfile.crianca = false;
         newProfile.urlImagem = '../../assets/img/comum-red.png';
+        newProfile.usuarioId = '';
         swal.fire('Sucesso!', 'Usuário cadastrado com sucesso!', 'success');
         this.resetForm(form);
       },
@@ -38,7 +38,8 @@ export class NewProfileComponent {
     this.newProfileService.UserProfile = {
       nome: '',
       crianca: false,
-      urlImagem: ''
+      urlImagem: '',
+      usuarioId: ''
     };
     form.resetForm();
   }

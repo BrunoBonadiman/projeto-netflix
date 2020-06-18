@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewProfileComponent } from './new-profile/new-profile.component';
 import { NewProfileService } from './new-profile/service/new-profile.service';
+import { HttpModule } from '@angular/http';
+import { ConteudoComponent } from './conteudo/conteudo.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { NewProfileService } from './new-profile/service/new-profile.service';
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
-    NewProfileComponent
+    NewProfileComponent,
+    ConteudoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { NewProfileService } from './new-profile/service/new-profile.service';
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     UserService,

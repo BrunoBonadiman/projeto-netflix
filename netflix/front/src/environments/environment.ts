@@ -4,6 +4,7 @@
 
 export const environment = {
   apiBaseUrl: 'http://localhost:3000/api',
+  apiBaseUrlNewProfile: 'http://localhost:3000/api/profile',
   production: false
 };
 

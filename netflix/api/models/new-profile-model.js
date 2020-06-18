@@ -13,7 +13,7 @@ var newProfileSchema = new Schema({
     urlImagem:{
         type: String
     },
-    Usuario: {
+    usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

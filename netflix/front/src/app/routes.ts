@@ -8,6 +8,7 @@ import { SignupComponent } from './user/signup/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NewProfileComponent } from './new-profile/new-profile.component';
+import { ConteudoComponent } from './conteudo/conteudo.component';
 
 export const appRoutes: Routes = [
   {
@@ -45,6 +46,10 @@ export const appRoutes: Routes = [
   {
     path: 'newprofile',
     component: NewProfileComponent
+  },
+  {
+    path:'conteudo',
+    component: ConteudoComponent
   },
   {
     path: '',

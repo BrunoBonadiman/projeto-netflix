@@ -1,30 +1,59 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import  Profile  from '../model/new-profile.model';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { environment } from '../../../environments/environment';
+import 'rxjs-compat/Rx';
+import 'rxjs-compat/operator/map';
+import { Observable } from 'rxjs-compat';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class NewProfileService {
+  private newProfileService: Profile[] = [];
+  // messageIsEdit = new EventEmitter<any>();
 
-  UserProfile: Profile = {
+  UserProfile: Profile= {
     nome: '',
     crianca: false,
-    urlImagem: ''
+    urlImagem: '',
+    usuarioId: ''
   };
 
-  uri = 'http://localhost:3000/api/profile';
+  constructor(private http: Http) {}
 
-  noAuthHeader = { headers: new HttpHeaders({ NoAuth: 'True' }) };
-
-  constructor(private http: HttpClient) { }
-
-  adicionarPerfil(perfil: Profile) {
-    return this.http.post(`${this.uri}/create`, perfil, this.noAuthHeader);
+  addProfile(profile: Profile) {
+    const bodyReq = JSON.stringify(profile);
+    const myHeaders = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    return this.http.post(environment.apiBaseUrlNewProfile + '/create', bodyReq, {
+        headers: myHeaders,
+      })
+      .map((responseRecebida: Response) => {
+        var aux = responseRecebida.json();
+        const newObjMessage = new Profile();
+        this.newProfileService.push(newObjMessage);
+        return newObjMessage;
+      })
+      .catch((errorRecebido: Response) =>
+        Observable.throw(errorRecebido)
+      );
   }
 
-  getPerfil(){
-    return this.http.get(`${this.uri}/getProfile`);
+  getProfiles() {
+    // const myHeaders = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    return this.http.get(environment.apiBaseUrlNewProfile + '/getProfile');
+    //   .map((resposeRecebida: Response) => {
+    //     const responseEmJson = resposeRecebida.json();
+    //     const messageSResponseRecebida = responseEmJson.objsMessageSRecuperados;
+    //     let transformedCastMassagesModelFrontEnd: Profile[] = [];
+
+    //     for (let perfil of messageSResponseRecebida) {
+    //       transformedCastMassagesModelFrontEnd.push(
+    //         new Profile()
+    //       );
+    //     }
+
+    //     this.newProfileService = transformedCastMassagesModelFrontEnd;
+    //     return transformedCastMassagesModelFrontEnd;
+    //   })
+    //   .catch((erroRecebido: Response) => Observable.throw(erroRecebido));
+     }
   }
-}

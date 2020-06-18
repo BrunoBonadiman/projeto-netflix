@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewProfileService } from '../new-profile/service/new-profile.service';
 import Profile from '../new-profile/model/new-profile.model';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,16 +11,10 @@ import Profile from '../new-profile/model/new-profile.model';
 })
 export class UserProfileComponent implements OnInit {
   UserProfile;
-  info = <any>[];
+  perfis: Profile[] = [];
 
   constructor(private newProfileService: NewProfileService, private router: Router) { }
   ngOnInit() {
-    this.newProfileService.getPerfil().subscribe(
-      (res) => {
-        this.UserProfile = res['user'];
-      },
-      (err) => {
-        console.log(err);
-      });
+     this.newProfileService.getProfiles();
   }
 }

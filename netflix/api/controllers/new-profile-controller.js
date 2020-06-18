@@ -3,21 +3,26 @@ const _ = require('lodash');
 const NewProfile = require('../models/new-profile-model');
 
 module.exports.create = (req, res, next) => {
-  let profile = new NewProfile();
+  const usuarioId = res.locals.auth_data._id;
+  req.body.usuario = usuarioId;
+
+  const profile = new NewProfile();
   profile.nome = req.body.nome;
   profile.crianca = req.body.crianca;
   profile.urlImagem = req.body.urlImagem;
-  profile.save((err, doc) => {
-    if (!err)
-      res.send(doc);
-    else {
-      if (err.code == 11000)
-        res.status(422).send(['Esse nome já exite para essa conta.']);
-      else
-        return next(err);
-    }
-
-  });
+  profile.save((err, result) => {
+    console.log(result);
+        if (err) {
+            return res.status(500).json({
+                myErroTitle: 'Ocorreu um erro ao salvar o Perfil!',
+                myError: err
+            });
+        }
+        res.status(201).json({
+            myMsgSucess: "Perfil cadastrado com sucesso!",
+            objMessageSave: result
+        });
+    });
 }
 
 module.exports.getProfile = (req, res, next) => {
